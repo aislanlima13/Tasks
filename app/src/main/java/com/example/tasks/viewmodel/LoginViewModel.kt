@@ -2,13 +2,14 @@ package com.example.tasks.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import com.example.tasks.service.repository.PersonRepository
 
 class LoginViewModel(application: Application) : AndroidViewModel(application) {
 
-    /**
-     * Faz login usando API
-     */
+    private val mPersonRepository = PersonRepository()
+
     fun doLogin(email: String, password: String) {
+        mPersonRepository.login(email, password)
     }
 
     /**
