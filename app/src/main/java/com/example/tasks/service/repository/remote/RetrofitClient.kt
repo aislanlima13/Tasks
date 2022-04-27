@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class RetrofitClient private constructor(){
     companion object {
-        private val baseUrl = "http://devmasterteam.com/CursoAndroidAPI"
+        private val baseUrl = "http://devmasterteam.com/CursoAndroidAPI/"
         private lateinit var retrofit: Retrofit
 
         private fun getRetrofitInstance(): Retrofit {
