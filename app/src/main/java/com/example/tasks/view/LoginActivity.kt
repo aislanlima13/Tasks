@@ -37,17 +37,11 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    /**
-     * Inicializa os eventos de click
-     */
     private fun setListeners() {
         button_login.setOnClickListener(this)
         text_register.setOnClickListener(this)
     }
 
-    /**
-     * Verifica se usuário está logado
-     */
     private fun verifyLoggedUser() {
         mViewModel.verifyLoggedUser()
     }
@@ -61,11 +55,14 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                 Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
             }
         })
+
+        mViewModel.loggedUser.observe(this, Observer {
+            if (it) {
+                startActivity(Intent(this, MainActivity::class.java))
+            }
+        })
     }
 
-    /**
-     * Autentica usuário
-     */
     private fun handleLogin() {
         val email = edit_email.text.toString()
         val password = edit_password.text.toString()
