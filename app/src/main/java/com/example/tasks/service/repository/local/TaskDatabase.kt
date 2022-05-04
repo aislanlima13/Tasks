@@ -9,7 +9,7 @@ import com.example.tasks.service.model.PriorityModel
 @Database(entities = [PriorityModel::class], version = 1)
 abstract class TaskDatabase : RoomDatabase() {
 
-    abstract fun priorityDao(): PriotiryDAO
+    abstract fun priorityDao(): PriorityDAO
 
     companion object {
         private lateinit var INSTANCE: TaskDatabase

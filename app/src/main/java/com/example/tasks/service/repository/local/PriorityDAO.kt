@@ -6,13 +6,16 @@ import androidx.room.Query
 import com.example.tasks.service.model.PriorityModel
 
 @Dao
-interface PriotiryDAO {
+interface PriorityDAO {
 
     @Insert
     fun save(list: List<PriorityModel>)
 
     @Query("SELECT * FROM priority")
     fun list(): List<PriorityModel>
+
+    @Query("SELECT description FROM priority WHERE id = :id")
+    fun getDescription(id: Int): String
 
     @Query("DELETE FROM priority")
     fun clear()
