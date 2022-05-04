@@ -28,4 +28,36 @@ class AllTasksViewModel(application: Application) : AndroidViewModel(application
 
         })
     }
+
+    fun complete(id: Int) {
+        updateStatus(id, true)
+    }
+
+    fun undo(id: Int) {
+        updateStatus(id, false)
+    }
+
+    private fun updateStatus(id: Int, complete: Boolean) {
+        mTaskRepository.updateStatus(id, complete, object : APIListener<Boolean>{
+            override fun onSuccess(model: Boolean) {
+                list()
+            }
+
+            override fun onFailure(str: String) {
+            }
+
+        })
+    }
+
+    fun delete(id: Int) {
+        mTaskRepository.delete(id, object : APIListener<Boolean>{
+            override fun onSuccess(model: Boolean) {
+                list()
+            }
+
+            override fun onFailure(str: String) {
+            }
+
+        })
+    }
 }
